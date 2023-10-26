@@ -30,29 +30,29 @@
         <jointpos name="elbow_pos" joint="elbow"/>
         <jointpos name="wrist_angle_pos" joint="wrist_angle"/>
         <jointpos name="wrist_rotate_pos" joint="wrist_rotate"/>
+        <jointpos name="gripper_pos" joint="gripper"/>
         <jointpos name="left_finger_pos" joint="left_finger"/>
         <jointpos name="right_finger_pos" joint="right_finger"/>
-        <jointpos name="gripper_pos" joint="gripper"/>
 
         <jointvel name="waist_vel" joint="waist"/>
         <jointvel name="shoulder_vel" joint="shoulder"/>
         <jointvel name="elbow_vel" joint="elbow"/>
         <jointvel name="wrist_angle_vel" joint="wrist_angle"/>
         <jointvel name="wrist_rotate_vel" joint="wrist_rotate"/>
+        <jointvel name="gripper_vel" joint="gripper"/>
         <jointvel name="left_finger_vel" joint="left_finger"/>
         <jointvel name="right_finger_vel" joint="right_finger"/>
-        <jointvel name="gripper_vel" joint="gripper"/>
     </sensor>
 
     <actuator>
-        <position name="waist" joint="waist" kp="870" forcerange="-2 2" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
-        <position name="shoulder" joint="shoulder" kp="870" forcerange="-1 1" ctrlrange="-1.85005 1.25664" ctrllimited="true" forcelimited="true"/>
-        <position name="elbow" joint="elbow" kp="870" forcerange="-1 1" ctrlrange="-1.76278 1.6057" ctrllimited="true" forcelimited="true"/>
-        <position name="wrist_angle" joint="wrist_angle" kp="870" forcerange="-1 1" ctrlrange="-1.8675 2.23402" ctrllimited="true" forcelimited="true"/>
-        <position name="wrist_rotate" joint="wrist_rotate" kp="870" forcerange="-1 1" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
+        <position name="waist" joint="waist" kp="870" forcerange="-10 10" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
+        <position name="shoulder" joint="shoulder" kp="870" forcerange="-10 10" ctrlrange="-1.85005 1.25664" ctrllimited="true" forcelimited="true"/>
+        <position name="elbow" joint="elbow" kp="870" forcerange="-10 10" ctrlrange="-1.76278 1.6057" ctrllimited="true" forcelimited="true"/>
+        <position name="wrist_angle" joint="wrist_angle" kp="870" forcerange="-10 10" ctrlrange="-1.8675 2.23402" ctrllimited="true" forcelimited="true"/>
+        <position name="wrist_rotate" joint="wrist_rotate" kp="870" forcerange="-10 10" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
+        <position name="gripper" joint="gripper" kp="120" forcerange="-12 12" ctrllimited="false" forcelimited="true"/>
         <position name="left_finger" joint="left_finger" kp="120" forcerange="-12 12" ctrlrange="0.021 0.057" ctrllimited="true" forcelimited="true"/>
         <position name="right_finger" joint="right_finger" kp="120" forcerange="-12 12" ctrlrange="-0.057 -0.021" ctrllimited="true" forcelimited="true"/>
-        <position name="gripper" joint="gripper" kp="120" forcerange="-12 12" ctrllimited="false" forcelimited="true"/>
     </actuator>
 
 </mujocoinclude>
