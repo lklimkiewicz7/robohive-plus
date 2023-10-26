@@ -21,9 +21,14 @@
         <site name='workspace' type='box' size='.6 .375 .25' pos='0 0.475 1.0' group='3' rgba='0 0 .4 .2'/>
 
         <!-- Robot -->
-        <body pos='0 0 .775' euler='0 0 1.57'>
+        <body pos='-0.5 0 .775' euler='0 0 1.57'>
             <geom type='cylinder' size='.120 .4' pos='-.04 0 -.4'/>
-            <include file="../../../simhive/interbotix_sim/vx300/assets/chain0.xml"/>
+            <include file="../../../simhive/interbotix_sim/vx300/assets/arm0.xml"/>
+        </body>
+
+        <body pos='0.5 0 0.775' euler='0 0 1.57'>
+            <geom type='cylinder' size='.120 .4' pos='-.04 0 -.4'/>
+            <include file="../../../simhive/interbotix_sim/vx300/assets/arm1.xml"/>
         </body>
 
         <!-- simple Table -->

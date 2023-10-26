@@ -16,7 +16,7 @@ register(
         'model_path': curr_dir+'/vx300/vx300_ycb_v0.xml',
         'config_path': curr_dir+'/vx300/vx300_ycb_v0.config',
         'robot_ndof': 9,
-        'robot_site_name': "end_effector",
+        'robot_site_name': "vx300_arm0_end_effector",
         'object_site_name': "sugarbox",
         'target_site_name': "target",
         'target_xyz_range': {'high':[-.4, 0.5, 0.78], 'low':[-.4, 0.5, 0.78]}
