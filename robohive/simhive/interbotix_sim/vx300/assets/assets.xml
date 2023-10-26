@@ -20,6 +20,7 @@
     <default>
         <default class="interbotix">
             <joint damping="5"/>
+            <geom rgba="0.235 0.235 0.235 1"/>
         </default>
     </default>
 
