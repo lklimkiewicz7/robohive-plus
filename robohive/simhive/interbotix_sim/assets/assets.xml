@@ -1,0 +1,55 @@
+<mujocoinclude>
+<!-- =================================================
+    Copyright 2018 Vikash Kumar
+    Model   :: Franka (MuJoCoV2.0)
+    Author  :: Vikash Kumar (vikashplus@gmail.com)
+    source  :: https://github.com/vikashplus/franka_sim
+    License :: Under Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+====================================================== -->
+
+    <compiler angle="radian"/>
+    <!-- <option timestep="0.002" noslip_iterations="20"/> -->
+    <option timestep="0.002"/>
+    <size nuser_actuator="5"/>
+
+    <asset>
+        <mesh name="vx300_1_base" file="meshes/vx300_1_base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_2_shoulder" file="meshes/vx300_2_shoulder.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_3_upper_arm" file="meshes/vx300_3_upper_arm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_4_forearm" file="meshes/vx300_4_forearm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_5_wrist" file="meshes/vx300_5_wrist.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_6_gripper" file="meshes/vx300_6_gripper.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_7_gripper_prop" file="meshes/vx300_7_gripper_prop.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_8_gripper_bar" file="meshes/vx300_8_gripper_bar.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_9_gripper_finger" file="meshes/vx300_9_gripper_finger.stl" scale="0.001 0.001 0.001" />
+    </asset>
+
+    <default>
+        <default class="interbotix">
+            <joint damping="5"/>
+        </default>
+    </default>
+
+    <sensor>
+        <jointpos name="waist_pos" joint="waist"/>
+        <jointpos name="shoulder_pos" joint="shoulder"/>
+        <jointpos name="elbow_pos" joint="elbow"/>
+        <jointpos name="wrist_angle_pos" joint="wrist_angle"/>
+        <jointpos name="wrist_rotate_pos" joint="wrist_rotate"/>
+
+        <jointvel name="waist_vel" joint="waist"/>
+        <jointvel name="shoulder_vel" joint="shoulder"/>
+        <jointvel name="elbow_vel" joint="elbow"/>
+        <jointvel name="wrist_angle_vel" joint="wrist_angle"/>
+        <jointvel name="wrist_rotate_vel" joint="wrist_rotate"/>
+    </sensor>
+
+    <actuator>
+        <position name="waist" joint="waist" kp="870" forcerange="-2 2" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true" user="1002 40 2001 -0.005 0.005"/>
+        <position name="shoulder" joint="shoulder" kp="870" forcerange="-1 1" ctrlrange="-1.85005 1.25664" ctrllimited="true" forcelimited="true" user="1002 40 2001 -0.005 0.005"/>
+        <position name="elbow" joint="elbow" kp="870" forcerange="-1 1" ctrlrange="-1.76278 1.6057" ctrllimited="true" forcelimited="true" user="1002 40 2001 -0.005 0.005"/>
+        <position name="wrist_angle" joint="wrist_angle" kp="870" forcerange="-1 1" ctrlrange="-1.8675 2.23402" ctrllimited="true" forcelimited="true" user="1002 40 2001 -0.005 0.005"/>
+        <position name="wrist_rotate" joint="wrist_rotate" kp="870" forcerange="-1 1" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true" user="1002 40 2001 -0.005 0.005"/>
+    </actuator>
+
+</mujocoinclude>
