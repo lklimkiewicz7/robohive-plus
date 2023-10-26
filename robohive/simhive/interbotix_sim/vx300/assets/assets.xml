@@ -13,15 +13,15 @@
     <size nuser_actuator="5"/>
 
     <asset>
-        <mesh name="vx300_1_base" file="meshes/vx300_1_base.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_2_shoulder" file="meshes/vx300_2_shoulder.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_3_upper_arm" file="meshes/vx300_3_upper_arm.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_4_forearm" file="meshes/vx300_4_forearm.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_5_wrist" file="meshes/vx300_5_wrist.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_6_gripper" file="meshes/vx300_6_gripper.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_7_gripper_prop" file="meshes/vx300_7_gripper_prop.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_8_gripper_bar" file="meshes/vx300_8_gripper_bar.stl" scale="0.001 0.001 0.001" />
-        <mesh name="vx300_9_gripper_finger" file="meshes/vx300_9_gripper_finger.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_1_base" file="vx300/meshes/vx300_1_base.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_2_shoulder" file="vx300/meshes/vx300_2_shoulder.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_3_upper_arm" file="vx300/meshes/vx300_3_upper_arm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_4_forearm" file="vx300/meshes/vx300_4_forearm.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_5_wrist" file="vx300/meshes/vx300_5_wrist.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_6_gripper" file="vx300/meshes/vx300_6_gripper.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_7_gripper_prop" file="vx300/meshes/vx300_7_gripper_prop.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_8_gripper_bar" file="vx300/meshes/vx300_8_gripper_bar.stl" scale="0.001 0.001 0.001" />
+        <mesh name="vx300_9_gripper_finger" file="vx300/meshes/vx300_9_gripper_finger.stl" scale="0.001 0.001 0.001" />
     </asset>
 
     <default>

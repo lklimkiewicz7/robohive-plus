@@ -11,7 +11,7 @@
     <size njmax='1000' nconmax='1000'/>
 
     <include file="../../../simhive/scene_sim/topfloor_scene.xml"/>
-    <include file="../../../simhive/interbotix_sim/assets/assets.xml"/>
+    <include file="../../../simhive/interbotix_sim/vx300/assets/assets.xml"/>
     <include file="../../../simhive/furniture_sim/simpleTable/simpleTable_asset.xml"/>
 
     <include file="../../../simhive/YCB_sim/includes/defaults_ycb.xml"/>
@@ -29,7 +29,7 @@
         <!-- Robot -->
         <body pos='0 0 .775' euler='0 0 1.57'>
             <geom type='cylinder' size='.120 .4' pos='-.04 0 -.4'/>
-            <include file="../../../simhive/interbotix_sim/assets/chain0.xml"/>
+            <include file="../../../simhive/interbotix_sim/vx300/assets/chain0.xml"/>
         </body>
 
         <!-- simple Table -->
