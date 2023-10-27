@@ -4,8 +4,11 @@
     <size njmax='1000' nconmax='1000'/>
 
     <include file="../../../simhive/scene_sim/topfloor_scene.xml"/>
-    <include file="../../../simhive/interbotix_sim/vx300/assets/assets.xml"/>
     <include file="../../../simhive/plus_sim/large_table/large_table_asset.xml"/>
+
+    <include file="../../../simhive/interbotix_sim/vx300/assets/assets.xml"/>
+    <include file="../../../simhive/interbotix_sim/vx300/assets/arm0_assets.xml"/>
+    <include file="../../../simhive/interbotix_sim/vx300/assets/arm1_assets.xml"/>
 
     <include file="../../../simhive/YCB_sim/includes/defaults_ycb.xml"/>
     <include file="../../../simhive/YCB_sim/includes/assets_004_sugar_box.xml"/>
