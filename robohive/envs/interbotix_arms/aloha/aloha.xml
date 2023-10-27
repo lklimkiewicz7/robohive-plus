@@ -15,8 +15,8 @@
     <worldbody>
 
         <!-- Cameras -->
-        <camera name='top_cam' pos='0 0 1.8' euler='0 0 0'/>
-        <camera name='front_cam' pos='0 -1 1' euler='1.57 0 0'/>
+        <camera name='top_cam' pos='0 0 1.5' euler='0 0 0'/>
+        <camera name='front_cam' pos='0 -0.6 1.1' euler='1.57 0 1.57'/>
 
         <!-- Robot -->
         <body pos='-0.5 0 .76' euler='0 0 0'>
