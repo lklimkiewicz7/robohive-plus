@@ -1,0 +1,17 @@
+<mujocoinclude>
+    <body name="large_table" pos="0 0 0"  childclass="body_large_table" >
+        <geom class="viz_large_table" type="box" size="1.2 .7 .025" pos="0 0 0.735"/>
+        <geom class="viz_large_table_2" type="box" size="1.15 0.65 .05" pos="0 0 0.66"/>
+        <geom class="viz_large_table" type="box" size="0.035 0.035 0.305" pos="-0.865 0.435 0.305"/>
+        <geom class="viz_large_table" type="box" size="0.035 0.035 0.305" pos="-0.865 -0.435 0.305"/>
+        <geom class="viz_large_table" type="box" size="0.035 0.035 0.305" pos="0.865 0.435 0.305"/>
+        <geom class="viz_large_table" type="box" size="0.035 0.035 0.305" pos="0.865 -0.435 0.305"/>
+
+        <geom type="box" size="1.2 .7 .025" pos="0 0 0.735" mass="40" />
+        <geom type="box" size="1.15 0.65 .05" pos="0 0 0.66"/>
+        <geom type="box" size="0.035 0.035 0.305" pos="-0.865 0.435 0.305"/>
+        <geom type="box" size="0.035 0.035 0.305" pos="-0.865 -0.435 0.305"/>
+        <geom type="box" size="0.035 0.035 0.305" pos="0.865 0.435 0.305"/>
+        <geom type="box" size="0.035 0.035 0.305" pos="0.865 -0.435 0.305"/>
+    </body>
+</mujocoinclude>
