@@ -38,6 +38,7 @@
                                 <geom pos="-0.0404 0.0575 0" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="vx300_9_gripper_finger" />
                             </body>
                             <site name='vx300_arm0_end_effector' pos='0.1 0 0' size='0.01' euler='0 0 0' rgba="1 0 0 0.25"/>
+                            <camera name='vx300_arm0_gripper_cam' pos='0 0 0.05' euler="1.57 -1.57 0" />
                         </body>
                     </body>
                 </body>
