@@ -9,6 +9,8 @@ class AlohaEnv(env_base.MujocoEnv):
     CAMERA_SIZE = '80x128'
     CAMERA_ENCODER = '2d'
     ARM_NDOF = 8
+    ARM_QPOS_HOME = np.zeros(ARM_NDOF, dtype=np.float32)
+    ARM_QPOS_SLEEP = np.array([0, -1.76, 1.6, 0.8, 0, 0, 0.057, -0.057])
     
     DEFAULT_OBS_KEYS = [
         'qp_arm0', 'qp_arm1', 'qv_arm0', 'qv_arm1'
@@ -42,6 +44,7 @@ class AlohaEnv(env_base.MujocoEnv):
                        reward_mode=reward_mode,
                        frame_skip=frame_skip,
                        **kwargs)
+        self.init_qpos = [*self.ARM_QPOS_SLEEP, *self.ARM_QPOS_SLEEP]
 
     def get_obs_dict(self, sim):
         obs_dict = {}
