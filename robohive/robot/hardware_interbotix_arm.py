@@ -2,10 +2,9 @@ from robohive.robot.hardware_base import hardwareBase
 
 
 class InterbotixArm(hardwareBase):
-    def __init__(self, name, arm_model, arm_id, ip_address, **kwargs):
+    def __init__(self, name, arm_model, ip_address, **kwargs):
         self.name = name
         self.arm_model = arm_model
-        self.arm_id = arm_id
         self.ip_address = ip_address
 
     def connect(self):
