@@ -16,7 +16,6 @@ register(
     kwargs={
         'model_path': curr_dir+'/aloha/aloha.xml',
         'config_path': curr_dir+'/aloha/aloha.config',
-        'robot_ndof': 16,
         'visual_keys': AlohaEnv.DEFAULT_VISUAL_KEYS,
     },
 )
