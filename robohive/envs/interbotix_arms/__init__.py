@@ -16,11 +16,7 @@ register(
     kwargs={
         'model_path': curr_dir+'/aloha/aloha.xml',
         'config_path': curr_dir+'/aloha/aloha.config',
-        'robot_ndof': 9,
-        'robot_site_name': "vx300_arm0_end_effector",
-        'object_site_name': "sugarbox",
-        'target_site_name': "target",
-        'target_xyz_range': {'high':[-.4, 0.5, 0.78], 'low':[-.4, 0.5, 0.78]},
+        'robot_ndof': 16,
         'visual_keys': AlohaEnv.DEFAULT_VISUAL_KEYS,
     },
 )

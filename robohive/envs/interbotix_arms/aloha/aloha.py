@@ -28,10 +28,6 @@ class AlohaEnv(env_base.MujocoEnv):
 
     def _setup(self,
                robot_ndof,
-               robot_site_name,
-               object_site_name,
-               target_site_name,
-               target_xyz_range,
                frame_skip=40,
                reward_mode="dense",
                obs_keys=DEFAULT_OBS_KEYS,
@@ -40,12 +36,6 @@ class AlohaEnv(env_base.MujocoEnv):
                **kwargs,
         ):
         self.robot_ndof = robot_ndof
-        # ids
-        self.grasp_sid = self.sim.model.site_name2id(robot_site_name)
-        self.object_sid = self.sim.model.site_name2id(object_site_name)
-        self.target_sid = self.sim.model.site_name2id(target_site_name)
-        self.target_xyz_range = target_xyz_range
-
         super()._setup(obs_keys=obs_keys,
                        proprio_keys=proprio_keys,
                        weighted_reward_keys=weighted_reward_keys,
@@ -72,7 +62,5 @@ class AlohaEnv(env_base.MujocoEnv):
         return rwd_dict
 
     def reset(self):
-        self.sim.model.site_pos[self.target_sid] = self.np_random.uniform(high=self.target_xyz_range['high'], low=self.target_xyz_range['low'])
-        self.sim_obsd.model.site_pos[self.target_sid] = self.sim.model.site_pos[self.target_sid]
         obs = super().reset(self.init_qpos, self.init_qvel)
         return obs
