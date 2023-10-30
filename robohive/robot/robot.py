@@ -141,7 +141,9 @@ class Robot():
             elif device['interface']['type'] == 'realsense':
                 try:
                     from .hardware_realsense import RealSense
-                    device['robot'] = RealSense(name=name, **device['interface'])
+                    from .hardware_realsense_fake import FakeRealSense
+                    # device['robot'] = RealSense(name=name, **device['interface'])
+                    device['robot'] = FakeRealSense(name=name, **device['interface'])
                 except:
                     from .hardware_realsense_single import RealsenseAPI
                     device['robot'] = RealsenseAPI(**device['interface'])
@@ -149,6 +151,10 @@ class Robot():
             elif device['interface']['type'] == 'robotiq':
                 from .hardware_robotiq import Robotiq
                 device['robot'] = Robotiq(name=name, **device['interface'])
+                
+            elif device['interface']['type'] == 'interbotix_arm':
+                from .hardware_interbotix_arm import InterbotixArm
+                device['robot'] = InterbotixArm(name=name, **device['interface'])
 
             else:
                 print("ERROR: interface ({}) not found".format(device['interface']['type']))
@@ -169,7 +175,7 @@ class Robot():
                 device['robot'].engage_motor(motor_id=device['actuator_ids'], enable=True)
 
             # Other devices
-            elif device['interface']['type'] in ['optitrack', 'franka', 'realsense', 'robotiq']:
+            elif device['interface']['type'] in ['optitrack', 'franka', 'realsense', 'robotiq', 'interbotix_arm']:
                 device['robot'].connect()
 
             else:
@@ -211,11 +217,14 @@ class Robot():
                 elif device['interface']['type'] == 'robotiq':
                     sensors = device['robot'].get_sensors()
                     current_sensor_value[name] = sensors
+                    
+                elif device['interface']['type'] == 'interbotix_arm':
+                    sensors = device['robot'].get_sensors()
+                    current_sensor_value[name] = sensors
 
                 else:
                     print("ERROR: interface ({}) not found".format(device['interface']['type']))
                     raise NotImplemented
-
                 # calibrate sensors
                 for id, sensor in enumerate(device['sensor']):
                     current_sensor_value[name][id] = current_sensor_value[name][id]*sensor['scale'] + sensor['offset']
@@ -263,14 +272,22 @@ class Robot():
                         device['robot'].apply_commands(franka_des_pos)
 
                 elif device['interface']['type'] == 'robotiq':
-                    robotiq_des_pos = []
+                    interbotix_des_pos = []
                     for actuator in device['actuator']:
                         # calibrate
-                        robotiq_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
+                        interbotix_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
                     if is_reset:
-                        device['robot'].reset(robotiq_des_pos[0])
+                        device['robot'].reset(interbotix_des_pos[0])
                     else:
-                        device['robot'].apply_commands(robotiq_des_pos[0])
+                        device['robot'].apply_commands(interbotix_des_pos[0])
+                elif device['interface']['type'] == 'interbotix_arm':
+                    interbotix_des_pos = []
+                    for actuator in device['actuator']:
+                        interbotix_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
+                    if is_reset:
+                        device['robot'].reset(interbotix_des_pos)
+                    else:
+                        device['robot'].apply_commands(interbotix_des_pos)
                 else:
                     raise NotImplemented("ERROR: interface not found")
 
@@ -286,7 +303,7 @@ class Robot():
                     status = device['robot'].close(ids)
                     if status is True:
                         device['robot']= None
-            elif device['interface']['type'] in ['optitrack', 'franka', 'realsense', 'robotiq']:
+            elif device['interface']['type'] in ['optitrack', 'franka', 'realsense', 'robotiq', 'interbotix_arm']:
                 if device['robot']:
                     print("Closing {} connection".format(device['interface']['type']))
                     status = device['robot'].close()
@@ -437,7 +454,7 @@ class Robot():
                 current_sensor_value[cam_name] = data
 
                 # calibrate sensors
-                for cam in device['cam']:
+                for cam in device['cams']:
                     current_sensor_value[cam_name][cam['hdr_id']] = current_sensor_value[cam_name][cam['hdr_id']]*cam['scale'] + cam['offset']
                 device['sensor_data'] = current_sensor_value[cam_name]
                 device['sensor_time'] = current_sensor_value['time']
