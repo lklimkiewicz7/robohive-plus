@@ -27,15 +27,15 @@
                                 <joint name="vx300_arm1_gripper" pos="0 0 0" axis="1 0 0" frictionloss="0.1" />
                                 <geom pos="-0.0685 0 0" quat="0.707107 0 0 0.707107" type="mesh" mesh="vx300_7_gripper_prop" />
                             </body>
-                            <body name="vx300_arm1_left_finger_link" pos="0.0687 0 0">
-                                <inertial pos="0.017344 -0.0060692 0" quat="0.449364 0.449364 -0.54596 -0.54596" mass="0.034796" diaginertia="2.48003e-05 1.417e-05 1.20797e-05" />
-                                <joint name="vx300_arm1_left_finger" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0.021 0.057" frictionloss="0.1" />
-                                <geom pos="-0.0404 -0.0575 0" quat="-0.5 0.5 -0.5 0.5" type="mesh" mesh="vx300_9_gripper_finger" />
-                            </body>
                             <body name="vx300_arm1_right_finger_link" pos="0.0687 0 0">
                                 <inertial pos="0.017344 0.0060692 0" quat="0.44937 -0.44937 0.545955 -0.545955" mass="0.034796" diaginertia="2.48002e-05 1.417e-05 1.20798e-05" />
                                 <joint name="vx300_arm1_right_finger" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="-0.057 -0.021" frictionloss="0.1" />
                                 <geom pos="-0.0404 0.0575 0" quat="0.5 0.5 0.5 0.5" type="mesh" mesh="vx300_9_gripper_finger" />
+                            </body>
+                            <body name="vx300_arm1_left_finger_link" pos="0.0687 0 0">
+                                <inertial pos="0.017344 -0.0060692 0" quat="0.449364 0.449364 -0.54596 -0.54596" mass="0.034796" diaginertia="2.48003e-05 1.417e-05 1.20797e-05" />
+                                <joint name="vx300_arm1_left_finger" pos="0 0 0" axis="0 1 0" type="slide" limited="true" range="0.021 0.057" frictionloss="0.1" />
+                                <geom pos="-0.0404 -0.0575 0" quat="-0.5 0.5 -0.5 0.5" type="mesh" mesh="vx300_9_gripper_finger" />
                             </body>
                             <site name='vx300_arm1_end_effector' pos='0.1 0 0' size='0.01' euler='0 0 0' rgba="1 0 0 0.25"/>
                             <camera name='vx300_arm1_gripper_cam' pos='0 0 0.05' euler="1.57 -1.57 0" />

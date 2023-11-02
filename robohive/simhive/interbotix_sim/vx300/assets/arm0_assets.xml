@@ -6,8 +6,8 @@
         <jointpos name="vx300_arm0_wrist_angle_pos" joint="vx300_arm0_wrist_angle"/>
         <jointpos name="vx300_arm0_wrist_rotate_pos" joint="vx300_arm0_wrist_rotate"/>
         <jointpos name="vx300_arm0_gripper_pos" joint="vx300_arm0_gripper"/>
-        <jointpos name="vx300_arm0_left_finger_pos" joint="vx300_arm0_left_finger"/>
         <jointpos name="vx300_arm0_right_finger_pos" joint="vx300_arm0_right_finger"/>
+        <jointpos name="vx300_arm0_left_finger_pos" joint="vx300_arm0_left_finger"/>
 
         <jointvel name="vx300_arm0_waist_vel" joint="vx300_arm0_waist"/>
         <jointvel name="vx300_arm0_shoulder_vel" joint="vx300_arm0_shoulder"/>
@@ -15,8 +15,8 @@
         <jointvel name="vx300_arm0_wrist_angle_vel" joint="vx300_arm0_wrist_angle"/>
         <jointvel name="vx300_arm0_wrist_rotate_vel" joint="vx300_arm0_wrist_rotate"/>
         <jointvel name="vx300_arm0_gripper_vel" joint="vx300_arm0_gripper"/>
-        <jointvel name="vx300_arm0_left_finger_vel" joint="vx300_arm0_left_finger"/>
         <jointvel name="vx300_arm0_right_finger_vel" joint="vx300_arm0_right_finger"/>
+        <jointvel name="vx300_arm0_left_finger_vel" joint="vx300_arm0_left_finger"/>
     </sensor>
 
     <actuator>
@@ -26,8 +26,8 @@
         <position name="vx300_arm0_wrist_angle_pos" joint="vx300_arm0_wrist_angle" kp="870" forcerange="-10 10" ctrlrange="-1.8675 2.23402" ctrllimited="true" forcelimited="true"/>
         <position name="vx300_arm0_wrist_rotate_pos" joint="vx300_arm0_wrist_rotate" kp="870" forcerange="-10 10" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
         <position name="vx300_arm0_gripper_pos" joint="vx300_arm0_gripper" kp="120" forcerange="-12 12" ctrllimited="false" forcelimited="true"/>
-        <position name="vx300_arm0_left_finger_pos" joint="vx300_arm0_left_finger" kp="120" forcerange="-12 12" ctrlrange="0.021 0.057" ctrllimited="true" forcelimited="true"/>
         <position name="vx300_arm0_right_finger_pos" joint="vx300_arm0_right_finger" kp="120" forcerange="-12 12" ctrlrange="-0.057 -0.021" ctrllimited="true" forcelimited="true"/>
+        <position name="vx300_arm0_left_finger_pos" joint="vx300_arm0_left_finger" kp="120" forcerange="-12 12" ctrlrange="0.021 0.057" ctrllimited="true" forcelimited="true"/>
     </actuator>
 
 </mujocoinclude>
