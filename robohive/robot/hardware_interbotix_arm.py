@@ -15,7 +15,8 @@ class InterbotixArm(hardwareBase):
     def connect(self):
         self.bot = InterbotixManipulatorXS(
             robot_model=self.arm_model,
-            robot_name=self.name
+            robot_name=self.name,
+            gripper_name=None
         )
         self.bot.core.robot_set_operating_modes("single", "gripper", "current_based_position")
 
@@ -30,6 +31,7 @@ class InterbotixArm(hardwareBase):
 
     def close(self):
         if self.bot is not None:
+            self.bot.core.robot_set_operating_modes("single", "gripper", "pwm")
             self.bot.shutdown()
 
     def get_sensors(self):
