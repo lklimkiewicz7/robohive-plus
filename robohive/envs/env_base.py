@@ -72,6 +72,7 @@ class MujocoEnv(gym.Env, gym.utils.EzPickle, ObsVecDict):
                obs_range:tuple = (-10, 10), # Permissible range of values in obs vector returned by get_obs()
                rwd_viz:bool = False,        # Visualize rewards (WIP, needs vtils)
                device_id:int = 0,           # Device id for rendering
+               robot_class:type = Robot,
                **kwargs,                    # Additional arguments
         ):
 
@@ -85,7 +86,7 @@ class MujocoEnv(gym.Env, gym.utils.EzPickle, ObsVecDict):
         self.viewer_setup()
 
         # resolve robot config
-        self.robot = Robot(mj_sim=self.sim,
+        self.robot = robot_class(mj_sim=self.sim,
                            random_generator=self.np_random,
                            **kwargs)
 

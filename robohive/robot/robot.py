@@ -140,7 +140,7 @@ class Robot():
 
             elif device['interface']['type'] == 'realsense':
                 try:
-                    from .hardware_realsense import RealSense
+                    # from .hardware_realsense import RealSense
                     from .hardware_realsense_fake import FakeRealSense
                     # device['robot'] = RealSense(name=name, **device['interface'])
                     device['robot'] = FakeRealSense(name=name, **device['interface'])
@@ -690,6 +690,8 @@ class Robot():
         ctrl_feasible = self.process_actuator(controls=ctrl_desired, step_duration=step_duration,\
              normalized=ctrl_normalized, position_limits=True, velocity_limits=True, out_space=robot_type)
 
+        ctrl_feasible = self.transform_ctrl(ctrl_feasible)
+
         # Send controls to the robot
         if self.is_hardware:
             self.hardware_apply_controls(ctrl_feasible)
@@ -734,6 +736,8 @@ class Robot():
 
         prompt("Resetting {}".format(self.name), 'white', 'on_grey', flush=True)
 
+        reset_pos = self.transform_ctrl(reset_pos)
+        
         # Enforce specs on the request
         #   for actuated dofs => actoator specs
         #   for passive dofs => sensor specs
@@ -793,7 +797,9 @@ class Robot():
         timing_SRV_t0 = time.time()
 
         return feasibe_pos, feasibe_vel
-
+        
+    def transform_ctrl(self, ctrl):
+        return ctrl
 
     # close connection and exit out of the robot
     def close(self):
