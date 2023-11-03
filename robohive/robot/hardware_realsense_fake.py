@@ -13,7 +13,6 @@ logger = logging.getLogger(__name__)
 
 import robohive.robot.serdes as serdes
 
-sensor_msgs = serdes.get_capnp_msgs('sensor_msgs')
 
 class FakeRealSense(hardwareBase):
     def __init__(self, name, rgb_topic=None, d_topic=None, **kwargs):
