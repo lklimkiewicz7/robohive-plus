@@ -17,8 +17,8 @@ class InterbotixArmRobot(Robot):
         gripper_1 = self._angular_to_linear(pos[5])
         gripper_2 = self._angular_to_linear(pos[13])
         
-        pos[6:8] = [-gripper_1, gripper_1]
-        pos[14:16] = [-gripper_2, gripper_2]
+        pos[6:8] = [gripper_1, -gripper_1]
+        pos[14:16] = [gripper_2, -gripper_2]
         return pos
     
     def _angular_to_linear(self, angular_position):
