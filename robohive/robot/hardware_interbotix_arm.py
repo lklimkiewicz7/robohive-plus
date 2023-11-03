@@ -1,7 +1,13 @@
-from robohive.robot.hardware_base import hardwareBase
-
 import numpy as np
 from interbotix_xs_modules.xs_robot.arm import InterbotixManipulatorXS
+
+from robohive.robot.hardware_base import hardwareBase
+
+
+models_dof = {
+    'vx300': 5,
+    'vx300s': 6
+}
 
 
 class InterbotixArm(hardwareBase):
@@ -9,6 +15,7 @@ class InterbotixArm(hardwareBase):
         self.name = name
         self.arm_model = arm_model
         self.ip_address = ip_address
+        self.dof = models_dof[arm_model]
         
         self.bot = None
 
@@ -36,16 +43,18 @@ class InterbotixArm(hardwareBase):
 
     def get_sensors(self):
         sensors = np.array(self.bot.core.robot_get_joint_states().position)
-        assert len(sensors) == 8
+        assert len(sensors) == self.dof + 3
         return sensors
 
     def reset(self, reset_pos=None):
-        self.bot.core.robot_write_joint_command("gripper", reset_pos[5])
-        self.bot.arm.set_joint_positions(reset_pos[:5], blocking=True)
+        assert len(reset_pos) == self.dof + 3
+        self.bot.core.robot_write_joint_command("gripper", reset_pos[self.dof])
+        self.bot.arm.set_joint_positions(reset_pos[:self.dof], blocking=True)
 
     def apply_commands(self, q_desired):
-        self.bot.arm.set_joint_positions(q_desired[:5], blocking=False)
-        self.bot.core.robot_write_joint_command("gripper", q_desired[5])
+        assert len(q_desired) == self.dof + 3
+        self.bot.arm.set_joint_positions(q_desired[:self.dof], blocking=False)
+        self.bot.core.robot_write_joint_command("gripper", q_desired[self.dof])
 
     def __del__(self):
         self.close()
