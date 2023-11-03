@@ -45,6 +45,8 @@ class AlohaEnv(env_base.MujocoEnv):
                        reward_mode=reward_mode,
                        frame_skip=frame_skip,
                        robot_class=InterbotixArmRobot,
+                       robot_dof=5,
+                       robot_n_arms=2,
                        **kwargs)
         self.init_qpos = [*self.ARM_QPOS_SLEEP, *self.ARM_QPOS_SLEEP]
 
