@@ -38,12 +38,12 @@ class InterbotixArm(hardwareBase):
         return sensors
 
     def reset(self, reset_pos=None):
-        self.bot.gripper.gripper_controller(effort=reset_pos[5], delay=1)
+        self.bot.core.robot_write_joint_command("gripper", reset_pos[5])
         self.bot.arm.set_joint_positions(reset_pos[:5], blocking=True)
 
     def apply_commands(self, q_desired):
         self.bot.arm.set_joint_positions(q_desired[:5], blocking=False)
-        self.bot.gripper.gripper_controller(effort=q_desired[5], delay=0)
+        self.bot.core.robot_write_joint_command("gripper", q_desired[5])
 
     def __del__(self):
         self.close()
