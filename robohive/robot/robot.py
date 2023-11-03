@@ -272,20 +272,20 @@ class Robot():
                         device['robot'].apply_commands(franka_des_pos)
 
                 elif device['interface']['type'] == 'robotiq':
-                    interbotix_des_pos = []
+                    robotiq_des_pos = []
                     for actuator in device['actuator']:
                         # calibrate
-                        interbotix_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
+                        robotiq_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
                     if is_reset:
-                        device['robot'].reset(interbotix_des_pos[0])
+                        device['robot'].reset(robotiq_des_pos[0])
                     else:
-                        device['robot'].apply_commands(interbotix_des_pos[0])
+                        device['robot'].apply_commands(robotiq_des_pos[0])
                 elif device['interface']['type'] == 'interbotix_arm':
                     interbotix_des_pos = []
                     for actuator in device['actuator']:
                         interbotix_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
                     if is_reset:
-                        device['robot'].reset(interbotix_des_pos)
+                        device['robot'].reset()
                     else:
                         device['robot'].apply_commands(interbotix_des_pos)
                 else:

@@ -4,9 +4,14 @@ from interbotix_xs_modules.xs_robot.arm import InterbotixManipulatorXS
 from robohive.robot.hardware_base import hardwareBase
 
 
-models_dof = {
+MODELS_DOF = {
     'vx300': 5,
     'vx300s': 6
+}
+
+MODELS_SLEEP_POSES = {
+    'vx300': [0.0, -1.85, 1.54, 0.8, 0.0, 0.0, 0.0, 0.0],
+    'vx300s': [0.0, -1.85, 1.55, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
 }
 
 
@@ -15,7 +20,7 @@ class InterbotixArm(hardwareBase):
         self.name = name
         self.arm_model = arm_model
         self.ip_address = ip_address
-        self.dof = models_dof[arm_model]
+        self.dof = MODELS_DOF[arm_model]
         
         self.bot = None
 
@@ -46,7 +51,8 @@ class InterbotixArm(hardwareBase):
         assert len(sensors) == self.dof + 3
         return sensors
 
-    def reset(self, reset_pos=None):
+    def reset(self):
+        reset_pos = MODELS_SLEEP_POSES[self.arm_model]
         assert len(reset_pos) == self.dof + 3
         self.bot.core.robot_write_joint_command("gripper", reset_pos[self.dof])
         self.bot.arm.set_joint_positions(reset_pos[:self.dof], blocking=True)
