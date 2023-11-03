@@ -9,9 +9,9 @@ class AlohaEnv(env_base.MujocoEnv):
     
     CAMERA_SIZE = '80x128'
     CAMERA_ENCODER = '2d'
-    ARM_NDOF = 8
+    ARM_NDOF = 9
     ARM_QPOS_HOME = np.zeros(ARM_NDOF, dtype=np.float32)
-    ARM_QPOS_SLEEP = np.array([0, -1.85, 1.54, 0.8, 0, 0, 0, 0])
+    ARM_QPOS_SLEEP = np.array([0, -1.85, 1.54, 0.8, 0, 0, 0, 0, 0])
     
     DEFAULT_OBS_KEYS = [
         'qp_arm0', 'qp_arm1', 'qv_arm0', 'qv_arm1'
@@ -22,8 +22,8 @@ class AlohaEnv(env_base.MujocoEnv):
     DEFAULT_VISUAL_KEYS = [
         f'rgb:top_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
         f'rgb:front_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
-        f'rgb:vx300_arm0_gripper_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
-        f'rgb:vx300_arm1_gripper_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
+        f'rgb:vx300s_arm0_gripper_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
+        f'rgb:vx300s_arm1_gripper_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
     ]
 
     def __init__(self, model_path, obsd_model_path=None, seed=None, **kwargs):
@@ -45,7 +45,7 @@ class AlohaEnv(env_base.MujocoEnv):
                        reward_mode=reward_mode,
                        frame_skip=frame_skip,
                        robot_class=InterbotixArmRobot,
-                       robot_dof=5,
+                       robot_dof=6,
                        robot_n_arms=2,
                        **kwargs)
         self.init_qpos = [*self.ARM_QPOS_SLEEP, *self.ARM_QPOS_SLEEP]

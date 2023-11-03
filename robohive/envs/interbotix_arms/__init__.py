@@ -19,3 +19,15 @@ register(
         'visual_keys': AlohaEnv.DEFAULT_VISUAL_KEYS,
     },
 )
+
+
+register(
+    id='Aloha6-v0',
+    entry_point='robohive.envs.interbotix_arms.aloha.aloha:AlohaEnv',
+    max_episode_steps=500, #50steps*40Skip*2ms = 4s
+    kwargs={
+        'model_path': curr_dir+'/aloha/aloha6.xml',
+        'config_path': curr_dir+'/aloha/aloha6.config',
+        'visual_keys': AlohaEnv.DEFAULT_VISUAL_KEYS,
+    },
+)
