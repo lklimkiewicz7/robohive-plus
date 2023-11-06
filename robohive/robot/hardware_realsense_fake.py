@@ -1,4 +1,5 @@
 import numpy as np
+import cv2
 # from hardware_base import hardwareBase
 from robohive.robot.hardware_base import hardwareBase
 
@@ -11,8 +12,7 @@ import datetime
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-import robohive.robot.serdes as serdes
-
+camera = cv2.VideoCapture(0)
 
 class FakeRealSense(hardwareBase):
     def __init__(self, name, rgb_topic=None, d_topic=None, **kwargs):
@@ -31,6 +31,10 @@ class FakeRealSense(hardwareBase):
     def get_sensors(self):
         # get all data from all topics
         image = np.zeros((80, 128, 3), dtype=np.float32)
+        _, image = camera.read()
+        # image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
+        image = cv2.resize(image, (128, 80))
+        image = image[..., ::-1]
         return {'time': datetime.datetime.now(), 'rgb': image, 'd': image}
 
     def apply_commands(self):
