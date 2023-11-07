@@ -17,6 +17,12 @@ License :: Under Apache License, Version 2.0 (the "License"); you may not use th
 ![RoboHive Social Preview](https://github.com/vikashplus/robohive/assets/12837145/04aff6da-f9fa-4f5f-abc6-cfcd70c6cd90)
 `RoboHive` is a collection of environments/tasks simulated with the [MuJoCo](http://www.mujoco.org/) physics engine exposed using the OpenAI-Gym API.
 
+# Robohive Plus
+
+## Testing example environment:
+python3 -m robohive.utils.examine_env -e InterbotixVx300sDualSimple-v0 --env_args "{'is_hardware':True}"
+
+
 # Getting Started
    Getting started with RoboHive is as simple as -
    ``` bash
