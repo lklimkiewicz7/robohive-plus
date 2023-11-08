@@ -3,6 +3,7 @@ import os
 from gym.envs.registration import register
 from robohive.envs.env_variants import register_env_variant
 from .itx_simple import InterbotixSimpleEnv
+from .itx_cubes import InterbotixCubesEnv
 
 
 curr_dir = os.path.dirname(os.path.abspath(__file__))
@@ -22,7 +23,7 @@ register(
         'model_path': curr_dir+'/assets/itx_vx300s_dual.xml',
         'config_path': curr_dir+'/assets/itx_vx300s_dual.config',
         'n_arms': 2,
-        'arm_dof': 6
+        'arm_model': 'vx300s'
     },
 )
 
@@ -35,7 +36,7 @@ register(
         'model_path': curr_dir+'/assets/itx_vx300_dual.xml',
         'config_path': curr_dir+'/assets/itx_vx300_dual.config',
         'n_arms': 2,
-        'arm_dof': 5
+        'arm_model': 'vx300'
     },
 )
 
@@ -48,7 +49,7 @@ register(
         'model_path': curr_dir+'/assets/itx_vx300s_dual.xml',
         'config_path': curr_dir+'/assets/itx_vx300s_dual.config',
         'n_arms': 2,
-        'arm_dof': 6,
+        'arm_model': 'vx300s',
         'visual_keys': [
             f'rgb:top_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
             f'rgb:front_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
@@ -67,7 +68,7 @@ register(
         'model_path': curr_dir+'/assets/itx_vx300_dual.xml',
         'config_path': curr_dir+'/assets/itx_vx300_dual.config',
         'n_arms': 2,
-        'arm_dof': 5,
+        'arm_model': 'vx300',
         'visual_keys': [
             f'rgb:top_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
             f'rgb:front_cam:{CAMERA_SIZE}:{CAMERA_ENCODER}',
@@ -86,6 +87,19 @@ register(
         'model_path': curr_dir+'/assets/itx_vx300s.xml',
         'config_path': curr_dir+'/assets/itx_vx300s.config',
         'n_arms': 1,
-        'arm_dof': 6
+        'arm_model': 'vx300s'
+    },
+)
+
+
+register(
+    id='InterbotixVx300sDualBlocksCam-v0',
+    entry_point='robohive.envs.interbotix_arms.itx_cubes:InterbotixCubesEnv',
+    max_episode_steps=500, #50steps*40Skip*2ms = 4s
+    kwargs={
+        'model_path': curr_dir+'/assets/itx_vx300s_dual_blocks.xml',
+        'config_path': curr_dir+'/assets/itx_vx300s_dual_blocks.config',
+        'n_arms': 2,
+        'arm_model': 'vx300s'
     },
 )

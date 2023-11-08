@@ -3,6 +3,17 @@ import math
 from .robot import Robot
 
 
+MODELS_DOF = {
+    'vx300': 5,
+    'vx300s': 6
+}
+
+MODELS_SLEEP_POSES = {
+    'vx300': [0.0, -1.85, 1.54, 0.8, 0.0, 0.0, 0.0, 0.0],
+    'vx300s': [0.0, -1.85, 1.55, 0.0, 0.8, 0.0, 0.0, 0.0, 0.0]
+}
+
+
 class InterbotixArmRobot(Robot):
     
     DEFAULT_HORN_RADIUS = 0.022

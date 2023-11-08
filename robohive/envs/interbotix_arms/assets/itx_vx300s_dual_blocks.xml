@@ -1,0 +1,70 @@
+<mujoco model="Interbotix">
+
+    <compiler angle="radian" meshdir="../../../simhive/interbotix_sim" texturedir="../../../simhive/interbotix_sim"/>
+    <size njmax='1000' nconmax='1000'/>
+
+    <include file="../../../simhive/scene_sim/topfloor_scene.xml"/>
+    <include file="../../../simhive/plus_sim/large_table/large_table_asset.xml"/>
+
+    <include file="../../../simhive/interbotix_sim/vx300s/assets/assets.xml"/>
+    <include file="../../../simhive/interbotix_sim/vx300s/assets/arm0_assets.xml"/>
+    <include file="../../../simhive/interbotix_sim/vx300s/assets/arm1_assets.xml"/>
+
+    <include file="../../../simhive/YCB_sim/includes/defaults_ycb.xml"/>
+    <include file="../../../simhive/YCB_sim/includes/assets_004_sugar_box.xml"/>
+    <include file="../../../simhive/YCB_sim/includes/assets_003_cracker_box.xml"/>
+
+
+    <worldbody>
+
+        <!-- Cameras -->
+        <camera name='top_cam' pos='0 0 1.5' euler='0 0 0'/>
+        <camera name='front_cam' pos='0 -0.6 1.1' euler='1.57 0 1.57'/>
+
+        <!-- Robot -->
+        <body pos='-0.5 0 .76' euler='0 0 0'>
+            <include file="../../../simhive/interbotix_sim/vx300s/assets/arm0.xml"/>
+        </body>
+
+        <!-- Robot -->
+        <body pos='0.5 0 0.76' euler='0 0 3.1415'>
+            <include file="../../../simhive/interbotix_sim/vx300s/assets/arm1.xml"/>
+        </body>
+
+        <!-- Table -->
+        <body pos='0 0 0'>
+            <include file="../../../simhive/plus_sim/large_table/large_table_body.xml"/>
+        </body>
+
+        <body name="red_cube" pos="0.3 0 0.8">
+            <inertial pos="0 0 0" mass="0.05" diaginertia="0.0001 0.0001 0.0001" />
+            <geom type="box" size="0.025 0.025 0.025" pos="0 0 0" rgba="0.9 0 0 1" mass=".005"/>
+            <site name="red_cube_site" size="0.01" pos="0 0 0"/>
+            
+            <joint name="Tx" axis="1 0 0" type="slide" damping="0" limited="true" range="-1.0 1.0"/>
+            <joint name="Ty" axis="0 1 0" type="slide" damping="0" limited="true" range="-0.5 0.5"/>
+            <joint name="Tz" axis="0 0 1" type="slide" damping="0" limited="true" range="-1.0 1.0"/>
+            <joint name="Rx" axis="1 0 0" type="hinge" damping="0" limited="true" range="-3.14 3.14"/>
+            <joint name="Ry" axis="0 1 0" type="hinge" damping="0" limited="true" range="-3.14 3.14"/>
+            <joint name="Rz" axis="0 0 1" type="hinge" damping="0" limited="true" range="-3.14 3.14"/>
+        </body>
+
+        <!-- <body name="green_cube" pos="-0.3 0 0.8">
+            <inertial pos="0 0 0" mass="0.05" diaginertia="0.0001 0.0001 0.0001" />
+            <geom type="box" size="0.025 0.025 0.025" pos="0 0 0" rgba="0 0.9 0 1" mass=".005"/>
+            <site name="green_cube_site" size="0.01" pos="0 0 0"/>
+            <freejoint/>
+        </body> -->
+
+    </worldbody>
+
+    <sensor>
+        <jointpos name="Tx" joint="Tx"/>
+        <jointpos name="Ty" joint="Ty"/>
+        <jointpos name="Tz" joint="Tz"/>
+        <jointpos name="Rx" joint="Rx"/>
+        <jointpos name="Ry" joint="Ry"/>
+        <jointpos name="Rz" joint="Rz"/>
+    </sensor>
+
+</mujoco>

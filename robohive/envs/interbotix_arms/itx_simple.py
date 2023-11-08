@@ -4,15 +4,17 @@ import numpy as np
 
 from robohive.envs import env_base
 from robohive.robot.robot_interbotix_arm import InterbotixArmRobot
+from robohive.robot.robot_interbotix_arm import MODELS_DOF, MODELS_SLEEP_POSES
 
 class InterbotixSimpleEnv(env_base.MujocoEnv):
     
-    def __init__(self, model_path, n_arms, arm_dof, obsd_model_path=None, seed=None, **kwargs):
+    def __init__(self, model_path, n_arms, arm_model, obsd_model_path=None, seed=None, **kwargs):
         gym.utils.EzPickle.__init__(self, model_path, obsd_model_path, seed, **kwargs)
         super().__init__(model_path=model_path, obsd_model_path=obsd_model_path, seed=seed)
         self.n_arms = n_arms
-        self.arm_dof = arm_dof
-        self._setup(robot_dof=arm_dof, robot_n_arms=n_arms, **kwargs)
+        self.arm_model = arm_model
+        self.arm_dof = MODELS_DOF[arm_model]
+        self._setup(robot_dof=self.arm_dof, robot_n_arms=n_arms, **kwargs)
 
     def _setup(self,
                robot_dof,
@@ -33,6 +35,9 @@ class InterbotixSimpleEnv(env_base.MujocoEnv):
                        robot_dof=robot_dof,
                        robot_n_arms=robot_n_arms,
                        **kwargs)
+
+        arms_qpos = np.array(MODELS_SLEEP_POSES[self.arm_model]*2)
+        self.init_qpos[:len(arms_qpos)] = arms_qpos
 
     def _generate_obs_keys(self):
         return self._generate_proprio_keys()

@@ -285,7 +285,7 @@ class Robot():
                     for actuator in device['actuator']:
                         interbotix_des_pos.append(control[actuator['sim_id']]*actuator['scale']+ actuator['offset'])
                     if is_reset:
-                        device['robot'].reset()
+                        device['robot'].reset(interbotix_des_pos)
                     else:
                         device['robot'].apply_commands(interbotix_des_pos)
                 else:
@@ -736,7 +736,8 @@ class Robot():
 
         prompt("Resetting {}".format(self.name), 'white', 'on_grey', flush=True)
 
-        reset_pos = self.transform_ctrl(reset_pos)
+        trans_reset_pos = self.transform_ctrl(reset_pos[:18])
+        reset_pos[:len(trans_reset_pos)] = trans_reset_pos
         
         # Enforce specs on the request
         #   for actuated dofs => actoator specs
