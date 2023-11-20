@@ -103,3 +103,16 @@ register(
         'arm_model': 'vx300s'
     },
 )
+
+
+register(
+    id='InterbotixVx300sSimpleTelop-v0',
+    entry_point='robohive.envs.interbotix_arms.itx_simple:InterbotixSimpleEnv',
+    max_episode_steps=500, #50steps*40Skip*2ms = 4s
+    kwargs={
+        'model_path': curr_dir+'/assets/itx_vx300s_telop.xml',
+        'config_path': curr_dir+'/assets/itx_vx300s.config',
+        'n_arms': 1,
+        'arm_dof': 6
+    },
+)
