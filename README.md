@@ -22,6 +22,9 @@ License :: Under Apache License, Version 2.0 (the "License"); you may not use th
 ## Testing example environment:
 python3 -m robohive.utils.examine_env -e InterbotixVx300sDualSimple-v0 --env_args "{'is_hardware':True}"
 
+## Teleoperation example
+python interbotix_teleop_oculus.py -e InterbotixVx300sSimpleTelop-v0 --env_args "{'is_hardware':True}"
+
 
 # Getting Started
    Getting started with RoboHive is as simple as -
