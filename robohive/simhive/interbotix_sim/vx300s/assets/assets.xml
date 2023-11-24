@@ -21,6 +21,12 @@
         <default class="interbotix">
             <joint damping="5"/>
             <geom rgba="0.235 0.235 0.235 1"/>
+            <default class="finger_collision">
+                <geom friction="0.9 0.1 0.1" priority="1" />
+            </default>
+            <default class="finger_joint">
+                <joint damping="20" />
+            </default>
         </default>
     </default>
 

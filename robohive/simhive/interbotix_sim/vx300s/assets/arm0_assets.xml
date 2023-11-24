@@ -30,8 +30,8 @@
         <position name="vx300s_arm0_wrist_angle_pos" joint="vx300s_arm0_wrist_angle" kp="870" forcerange="-10 10" ctrlrange="-1.8675 2.23402" ctrllimited="true" forcelimited="true"/>
         <position name="vx300s_arm0_wrist_rotate_pos" joint="vx300s_arm0_wrist_rotate" kp="870" forcerange="-10 10" ctrlrange="-3.14158 3.14158" ctrllimited="true" forcelimited="true"/>
         <position name="vx300s_arm0_gripper_pos" joint="vx300s_arm0_gripper" kp="120" forcerange="-12 12" ctrllimited="false" forcelimited="true"/>
-        <position name="vx300s_arm0_left_finger_pos" joint="vx300s_arm0_left_finger" kp="120" forcerange="-12 12" ctrlrange="0.021 0.057" ctrllimited="true" forcelimited="true"/>
-        <position name="vx300s_arm0_right_finger_pos" joint="vx300s_arm0_right_finger" kp="120" forcerange="-12 12" ctrlrange="-0.057 -0.021" ctrllimited="true" forcelimited="true"/>
+        <position name="vx300s_arm0_left_finger_pos" joint="vx300s_arm0_left_finger" kp="2000" forcerange="-80 80" ctrlrange="0.021 0.057" ctrllimited="true" forcelimited="true"/>
+        <position name="vx300s_arm0_right_finger_pos" joint="vx300s_arm0_right_finger" kp="2000" forcerange="-80 80" ctrlrange="-0.057 -0.021" ctrllimited="true" forcelimited="true"/>
     </actuator>
 
 </mujocoinclude>

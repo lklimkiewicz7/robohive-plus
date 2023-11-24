@@ -736,7 +736,8 @@ class Robot():
 
         prompt("Resetting {}".format(self.name), 'white', 'on_grey', flush=True)
 
-        reset_pos = self.transform_ctrl(reset_pos)
+
+        reset_pos = np.concatenate([self.transform_ctrl(reset_pos[:9]), reset_pos[9:]])
         
         # Enforce specs on the request
         #   for actuated dofs => actoator specs

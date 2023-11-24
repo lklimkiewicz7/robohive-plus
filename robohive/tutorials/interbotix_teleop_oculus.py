@@ -60,7 +60,7 @@ def vrbehind2mj(pose):
 @click.option('-rn', '--reset_noise', type=float, default=0.0, help=('Amplitude of noise during reset'))
 @click.option('-an', '--action_noise', type=float, default=0.0, help=('Amplitude of action noise during rollout'))
 @click.option('-o', '--output', type=str, default="teleOp_trace.h5", help=('Output name'))
-@click.option('-h', '--horizon', type=int, help='Rollout horizon', default=1000)
+@click.option('-h', '--horizon', type=int, help='Rollout horizon', default=100000)
 @click.option('-n', '--num_rollouts', type=int, help='number of repeats for the rollouts', default=2)
 @click.option('-f', '--output_format', type=click.Choice(['RoboHive', 'RoboSet']), help='Data format', default='RoboHive')
 @click.option('-c', '--camera', multiple=True, type=str, default=[], help=('list of camera topics for rendering'))
