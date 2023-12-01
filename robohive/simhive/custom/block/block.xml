@@ -1,0 +1,11 @@
+<mujocoinclude>
+
+    <body name="block">
+        <geom type="box" size="0.02 0.02 0.02" contype="0" conaffinity="0" group="2" />
+        <geom type="box" size="0.02 0.02 0.02" group="3" />
+        <camera name="block_view" mode="track" pos="-0.08 -0.08 0.08"
+            xyaxes="0.694 -0.720 0.000 0.379 0.366 0.850" />
+
+    </body>
+
+</mujocoinclude>

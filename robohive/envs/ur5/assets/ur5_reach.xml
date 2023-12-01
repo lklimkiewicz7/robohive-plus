@@ -48,6 +48,12 @@
             <include file="../../../simhive/custom/table/table.xml"/>
         </body>
 
+        <!-- Block -->
+        <body pos='0.5 -0.4 0.01' euler='0 0 0'>
+            <include file="../../../simhive/custom/block/block.xml"/>
+            <freejoint />
+        </body>
+
         <!-- tasks details added here via include-->
         <site name='target' type='sphere' size='.1' pos='0 0.475 1.0' group='1' rgba='.1 .8 .2 .4'/>
 
