@@ -1,0 +1,9 @@
+<mujocoinclude>
+
+    <body name="table">
+        <geom size="0.2915 0.5825 0.05" class="table_visual" type="box"
+            material="table" />
+        <geom size="0.2915 0.5825 0.05" class="table_collision" type="box" />
+    </body>
+
+</mujocoinclude>

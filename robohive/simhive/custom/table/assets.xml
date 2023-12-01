@@ -1,0 +1,17 @@
+<mujocoinclude>
+
+    <default>
+        <default class="table_visual">
+            <geom type="mesh" contype="0" conaffinity="0" group="2" />
+        </default>
+        <default class="table_collision">
+            <geom type="mesh" group="3" />
+        </default>
+    </default>
+
+    <asset>
+        <material name="table" rgba="1 1 1 1" reflectance="0" specular="0.0"
+            shininess="0" />
+    </asset>
+
+</mujocoinclude>
