@@ -76,5 +76,11 @@ robohive_quad_suite = set(gym.envs.registration.registry.env_specs.keys())-roboh
 robohive_env_suite  = robohive_env_suite | robohive_quad_suite
 robohive_quad_suite = sorted(robohive_quad_suite)
 
+# Register UR5 Suite
+import robohive.envs.ur5 # noqa
+robohive_ur5_suite = set(gym.envs.registration.registry.env_specs.keys())-robohive_env_suite-_current_gym_envs
+robohive_env_suite  = robohive_env_suite | robohive_ur5_suite
+robohive_ur5_suite = sorted(robohive_ur5_suite)
+
 # All RoboHive Envs
 robohive_env_suite = sorted(robohive_env_suite)

@@ -1,0 +1,33 @@
+<mujoco model="UR5 Reach">
+    <compiler angle="radian" meshdir="../../../simhive/ur5" texturedir="../../../simhive/ur5" autolimits="true"/>
+    <visual>
+        <quality offsamples="0"/>
+    </visual>
+    <option integrator="implicitfast" />
+    <size njmax='1000' nconmax='1000'/>
+
+    <include file="../../../simhive/scene_sim/topfloor_scene.xml"/>
+    <include file="../../../simhive/ur5/assets/assets.xml"/>
+    <include file="../../../simhive/furniture_sim/simpleTable/simpleTable_asset.xml"/>
+
+    <worldbody>
+
+        <site name='workspace' type='box' size='.6 .375 .25' pos='0 0.475 1.0' group='3' rgba='0 0 .4 .2'/>
+
+        <!-- Robot -->
+        <body pos='0 0 .775' euler='0 0 1.57'>
+            <geom type='cylinder' size='.120 .4' pos='-.04 0 -.4'/>
+            <include file="../../../simhive/ur5/assets/arm.xml"/>
+        </body>
+
+        <!-- simple Table -->
+        <body pos='0 0.475 0'>
+            <include file="../../../simhive/furniture_sim/simpleTable/simpleWoodTable_body.xml"/>
+        </body>
+
+        <!-- tasks details added here via include-->
+        <site name='target' type='sphere' size='.1' pos='0 0.475 1.0' group='1' rgba='.1 .8 .2 .4'/>
+
+    </worldbody>
+
+</mujoco>

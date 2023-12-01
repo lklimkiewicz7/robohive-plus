@@ -92,7 +92,7 @@ class ReachBaseV0(env_base.MujocoEnv):
             # Must keys
             ('sparse',  -1.0*reach_dist),
             ('solved',  reach_dist<.050),
-            ('done',    reach_dist > far_th),
+            ('done',    False),
         ))
         rwd_dict['dense'] = np.sum([wt*rwd_dict[key] for key, wt in self.rwd_keys_wt.items()], axis=0)
         return rwd_dict

@@ -1,0 +1,24 @@
+<mujoco model="Interbotix">
+    <compiler angle="radian" autolimits="true" meshdir="../../../simhive/interbotix_sim" texturedir="../../../simhive/interbotix_sim"/>
+    <visual>
+        <quality offsamples="0"/>
+    </visual>
+    <option integrator="implicitfast" />
+
+    <include file="../../../simhive/scene_sim/topfloor_scene.xml"/>
+    <include file="../../../simhive/plus_sim/large_table/large_table_asset.xml"/>
+
+    <include file="../../../simhive/ur5/assets/assets.xml"/>
+
+    <worldbody>
+        <body pos='-0.5 0 .76' euler='0 0 0'>
+            <include file="../../../simhive/interbotix_sim/vx300s/assets/arm0.xml"/>
+        </body>
+
+        <body pos='0 0 0'>
+            <include file="../../../simhive/plus_sim/large_table/large_table_body.xml"/>
+        </body>
+
+    </worldbody>
+
+</mujoco>
