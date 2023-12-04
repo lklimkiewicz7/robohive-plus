@@ -1,12 +1,11 @@
 <mujoco model="UR5 Reach">
     <compiler angle="radian" meshdir="../../../simhive/ur5" texturedir="../../../simhive/ur5" autolimits="true"/>
+    <option impratio="10" integrator="implicitfast"  cone="elliptic" />
     <visual>
+        <global azimuth="120" elevation="-20" offheight="512" />
         <quality offsamples="0" numquads="32"/>
         <headlight diffuse="0.6 0.6 0.6" ambient="0.6 0.6 0.6" specular="0.6 0.6 0.6" />
-        <global azimuth="120" elevation="-20" offheight="512" />
     </visual>
-    <option integrator="implicitfast" />
-    <size njmax='1000' nconmax='1000'/>
 
     <!-- <include file="../../../simhive/scene_sim/topfloor_scene.xml"/> -->
     <include file="../../../simhive/ur5/assets/assets.xml"/>
@@ -30,6 +29,11 @@
 
     <worldbody>
 
+        <!-- Robot -->
+        <body pos='0 0 0' euler='0 0 0'>
+            <include file="../../../simhive/ur5/assets/arm.xml"/>
+        </body>
+
         <geom name="floor" size="0 0 0.05" type="plane" material="floor" pos="0 0 -0.3" />
         <geom name="wall" size="0 0 0.05" type="plane" material="wall" pos="-0.6 0 0.4" euler="0 1.57 0" />
         <camera class="realsense" name="front" pos="1.4 0.0 0.8" xyaxes="0 1.000 0.000 -0.4 0.0 0.8" />
@@ -37,11 +41,6 @@
             xyaxes="0.0 -1.000 0.0 1.000 0.0 0.0" />
 
         <site name='workspace' type='box' size='.6 .375 .25' pos='0 0.475 1.0' group='3' rgba='0 0 .4 .2'/>
-
-        <!-- Robot -->
-        <body pos='0 0 0' euler='0 0 0'>
-            <include file="../../../simhive/ur5/assets/arm.xml"/>
-        </body>
 
         <!-- Table -->
         <body pos='0.4 0 0'>
