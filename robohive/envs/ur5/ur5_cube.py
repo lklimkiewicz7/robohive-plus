@@ -7,7 +7,7 @@ import numpy as np
 
 from robohive.envs import env_base
 
-class Ur5Env(env_base.MujocoEnv):
+class Ur5CubeEnv(env_base.MujocoEnv):
     
     INITIAL_POS = [-2.30, -2.34, 1.85, -1.06, -1.57, -0.73, 0.054, 0.054]
     DEFAULT_OBS_KEYS = ['position', 'velocity']
