@@ -29,8 +29,9 @@ register_env_variant(
     variant_id='Ur5ReachFixedCam-v0',
     variants={
             'visual_keys':[
-                "rgb:top_down:224x224:2d",
-                "rgb:front:224x224:2d",
+                "rgb:top_down:160x240:2d",
+                "rgb:front:160x240:2d",
+                "rgb:gripper:160x240:2d",
             ],
         },
     silent=True

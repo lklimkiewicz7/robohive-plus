@@ -68,8 +68,21 @@
                                         euler="0 0 1.57079632679" />
                                     <geom type="mesh" mesh="mount_collider_2" class="gripper_collision" pos="0 0 0.008"
                                         euler="0 0 1.57079632679" />
-                                    <site name="cam_mount" size="0.001" group="2"
-                                        pos="-0.032507  -0.065 0.054202" />
+
+                                    <!-- Camera -->
+                                    <body name="d435i" childclass="d435i" pos="-0.032507  -0.065 0.054202">
+                                        <camera fovy="42.5" name="gripper" pos="0.032507 0.00 -0.000954" euler="0 3.14159265359 0" />
+                                        <geom mesh="d435i_0" material="IR_Lens" class="camera_visual" />
+                                        <geom mesh="d435i_1" material="IR_Emitter_Lens" class="camera_visual" />
+                                        <geom mesh="d435i_2" material="IR_Rim" class="camera_visual" />
+                                        <geom mesh="d435i_3" material="IR_Lens" class="camera_visual" />
+                                        <geom mesh="d435i_4" material="Cameras_Gray" class="camera_visual" />
+                                        <geom mesh="d435i_5" material="Black_Acrylic" class="camera_visual" />
+                                        <geom mesh="d435i_6" material="Black_Acrylic" class="camera_visual" />
+                                        <geom mesh="d435i_7" material="RGB_Pupil" class="camera_visual" />
+                                        <geom mesh="d435i_8" mass="0.072" material="Metal_Casing" class="camera_visual" />
+                                        <geom class="camera_collision" type="capsule" mesh="d435i_8" />
+                                    </body>
                         
                                     <geom mesh="base" type="mesh" class="gripper_visual" mass="0.5" material="gripper"
                                         pos="0 0 0.03" />
