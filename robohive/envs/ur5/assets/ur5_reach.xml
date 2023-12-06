@@ -48,7 +48,7 @@
         </body>
 
         <!-- Block -->
-        <body pos='0.5 -0.4 0.01' euler='0 0 0'>
+        <body>
             <include file="../../../simhive/custom/block/block.xml"/>
             <freejoint />
         </body>
