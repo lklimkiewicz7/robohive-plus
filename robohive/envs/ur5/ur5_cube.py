@@ -4,6 +4,7 @@ from math import pi
 
 import gym
 import numpy as np
+from transforms3d import euler
 
 from robohive.envs import env_base
 
@@ -24,12 +25,29 @@ class Ur5CubeEnv(env_base.MujocoEnv):
                obs_keys=DEFAULT_OBS_KEYS,
                proprio_keys=DEFAULT_PROPRIO_KEYS,
                **kwargs,
-        ):        
+        ):
+        
+        ee_site_name = "end_effector"
+        
+        end_effector_rest_orientation = euler.euler2quat(np.pi, 0, -np.pi / 2)
+        
+        joint_names = [
+            "shoulder_pan_joint",
+            "shoulder_lift_joint",
+            "elbow_joint",
+            "wrist_1_joint",
+            "wrist_2_joint",
+            "wrist_3_joint",
+        ]
+        
         super()._setup(obs_keys=obs_keys,
                        proprio_keys=proprio_keys,
                        weighted_reward_keys={},
                        reward_mode=reward_mode,
                        frame_skip=frame_skip,
+                       ee_site_name=ee_site_name,
+                       end_effector_rest_orientation=end_effector_rest_orientation,
+                       joint_names=joint_names,
                        **kwargs)
         
         self.init_qpos = self.INITIAL_POS

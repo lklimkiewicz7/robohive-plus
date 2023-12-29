@@ -12,6 +12,11 @@ import time
 import numpy as np
 from collections import deque
 import os
+
+from transforms3d import quaternions
+from dm_control.utils.inverse_kinematics import qpos_from_site_pose
+
+
 np.set_printoptions(precision=4)
 
 
@@ -49,6 +54,9 @@ class Robot():
                 sensor_cache_maxsize = 5,   # cache size for sensors
                 noise_scale = 0,            # scale for sensor noise
                 random_generator = None,    # random number generator
+                ee_site_name='',
+                end_effector_rest_orientation=None,
+                joint_names=None,
                 **kwargs,
             ):
 
@@ -59,6 +67,11 @@ class Robot():
         self.is_hardware = bool(is_hardware)
         self._sensor_cache_maxsize = sensor_cache_maxsize
         self._noise_scale = noise_scale
+        
+        self.ee_site_name = ee_site_name
+        self.end_effector_rest_orientation = end_effector_rest_orientation
+        self.joint_names = joint_names
+        
         if random_generator == None:
             self.np_random = np.random
         else:
@@ -789,6 +802,38 @@ class Robot():
     # destructor
     def __del__(self):
         self.close()
+        
+    @property
+    def joints(self):
+        return [
+            self.sim.model.joint(joint_name) for joint_name in self.joint_names
+        ]
+        
+    @property
+    def joint_qpos_indices(self):
+        return [joint.qposadr[0] for joint in self.joints]
+
+        
+    def inverse_kinematics(self, position, orientation):
+        # + self.end_effector_rest_orientation, 
+        # + self.mj_physics
+        # + self.end_effector_site_name
+        # + self.joint_names
+        # + self.joint_qpos_indices
+        orientation = quaternions.qmult(orientation, self.end_effector_rest_orientation)
+        result = qpos_from_site_pose(
+            physics=self.sim.sim,
+            site_name=self.ee_site_name,
+            target_pos=position,
+            target_quat=orientation,
+            joint_names=self.joint_names,
+            tol=1e-7,
+            max_steps=300,
+            inplace=False,
+        )
+        if not result.success:
+            return None
+        return result.qpos[self.joint_qpos_indices].copy()
 
 
 def demo_robot():

@@ -51,7 +51,8 @@ setup(
         'torch',
         'h5py==3.7.0',
         'pink-noise-rl',
-        'gitpython'
+        'gitpython',
+        'transforms3d',
     ],
     extras_require={
       # To use mujoco bindings, run (pip install -e ".[mujoco]") and set sim_backend=MUJOCO
