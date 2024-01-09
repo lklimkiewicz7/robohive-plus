@@ -58,6 +58,9 @@ class Ur5CubeEnv(env_base.MujocoEnv):
         obs_dict['time'] = np.array([self.sim.data.time])
         obs_dict['position'] = sim.data.qpos.copy()[:7]
         obs_dict['velocity'] = sim.data.qvel.copy()[:7]
+        obs_dict['ee_position'] = self.robot.ee_position
+        obs_dict['ee_orientation'] = self.robot.ee_orientation
+        obs_dict['ee_gripper_joint'] = np.array([sim.data.qpos.copy()[-2]])
         return obs_dict
 
 

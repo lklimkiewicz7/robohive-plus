@@ -815,11 +815,6 @@ class Robot():
 
         
     def inverse_kinematics(self, position, orientation):
-        # + self.end_effector_rest_orientation, 
-        # + self.mj_physics
-        # + self.end_effector_site_name
-        # + self.joint_names
-        # + self.joint_qpos_indices
         orientation = quaternions.qmult(orientation, self.end_effector_rest_orientation)
         result = qpos_from_site_pose(
             physics=self.sim.sim,
@@ -834,6 +829,19 @@ class Robot():
         if not result.success:
             return None
         return result.qpos[self.joint_qpos_indices].copy()
+    
+    @property
+    def ee_position(self):
+        return self.sim.sim.data.site(self.ee_site_name).xpos.copy()
+    
+    @property
+    def ee_orientation(self):
+        return quaternions.qmult(
+            quaternions.mat2quat(
+                self.sim.sim.named.data.site_xmat[self.ee_site_name].copy()
+            ),
+            quaternions.qinverse(self.end_effector_rest_orientation),
+        )
 
 
 def demo_robot():

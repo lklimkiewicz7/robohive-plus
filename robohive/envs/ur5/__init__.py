@@ -24,3 +24,16 @@ register(
         ],
     }
 )
+
+register(
+    id='Ur5Cube-OctoJoints-v0',
+    entry_point='robohive.envs.ur5.ur5_cube_octo:Ur5CubeOctoJointsEnv',
+    max_episode_steps=2000,
+)
+
+
+register(
+    id='Ur5Cube-OctoGripper-v0',
+    entry_point='robohive.envs.ur5.ur5_cube_octo:Ur5CubeOctoGripperEnv',
+    max_episode_steps=2000,
+)
