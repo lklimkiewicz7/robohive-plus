@@ -61,7 +61,7 @@ class Ur5CubeOctoGripperEnv(gym.Env):
         self._env = gym.make('Ur5Cube-v0')
         
         self.PROPRIO_LOW = np.array([-1,  -1,   -0.2,    -1,   -1,   -1,   -1, 0])
-        self.PROPRIO_HIGH = np.array([1,  1,    0.5,     1,    1,    1,    1,  0.055])
+        self.PROPRIO_HIGH = np.array([1,  1,    0.5,     1,    1,    1,    1,  1])
         
         self.observation_space = spaces.Dict(
             {
@@ -76,9 +76,10 @@ class Ur5CubeOctoGripperEnv(gym.Env):
     
     def _get_obs(self):
         visual_dict = self._env.get_exteroception()
+        gripper_state = 1 if self._env.obs_dict['position'][-1] < 0.045 else 0
         return {
             'proprio': np.concatenate([
-                self._env.obs_dict['ee_position'], self._env.obs_dict['ee_orientation'], self._env.obs_dict['position'][-1:],  
+                self._env.obs_dict['ee_position'], self._env.obs_dict['ee_orientation'], np.array([gripper_state]),  
             ], dtype=np.float32),
             'image_primary': visual_dict['rgb:front:160x240:2d'],
             'image_secondary': visual_dict['rgb:top_down:160x240:2d'],
@@ -95,13 +96,13 @@ class Ur5CubeOctoGripperEnv(gym.Env):
     def step(self, ee_action):
         position = ee_action[:3]
         orientation = ee_action[3:7]
-        gripper = ee_action[7:8]
+        gripper = 0 if ee_action[7] > 0.5 else 0.055
         
         joints = self._env.robot.inverse_kinematics(position, orientation)
         if joints is None:
             print("Inverse kinematics failed. Unable to move to desired position. Doing nothing.")
         else:
-            joint_action = np.concatenate([joints, gripper])
+            joint_action = np.concatenate([joints, np.array([gripper])])
             self._env.step(np.array(joint_action))
         
         observation = self._get_obs()
