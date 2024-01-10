@@ -6,7 +6,7 @@ import numpy as np
 class Ur5CubeOctoJointsEnv(gym.Env):
     
     def __init__(self):
-        self._env = gym.make('Ur5Cube-v0')
+        self.env = gym.make('Ur5Cube-v0')
         
         self.JOINTS_LOW = np.array([-6.28319,  -6.28319,   -3.1415,    -6.28319,   -6.28319,   -6.28319,   0])
         self.JOINTS_HIGH = np.array([6.28319,  6.28319,    3.1415,     6.28319,    6.28319,    6.28319,    0.055])
@@ -23,9 +23,9 @@ class Ur5CubeOctoJointsEnv(gym.Env):
         self.action_space = spaces.Box(low=self.JOINTS_LOW, high=self.JOINTS_HIGH, dtype=np.float32)
     
     def _get_obs(self):
-        visual_dict = self._env.get_exteroception()
+        visual_dict = self.env.get_exteroception()
         return {
-            'proprio': np.array(self._env.obs_dict['position'], dtype=np.float32),
+            'proprio': np.array(self.env.obs_dict['position'], dtype=np.float32),
             'image_primary': visual_dict['rgb:front:160x240:2d'],
             'image_secondary': visual_dict['rgb:top_down:160x240:2d'],
             'image_wrist': visual_dict['rgb:gripper:160x240:2d']
@@ -35,11 +35,11 @@ class Ur5CubeOctoJointsEnv(gym.Env):
         return {}
         
     def reset(self, seed=None, options=None):
-        self._env.reset()
+        self.env.reset()
         return self._get_obs(), self._get_info()
         
     def step(self, action):
-        self._env.step(np.array(action))
+        self.env.step(np.array(action))
         
         observation = self._get_obs()
         info = self._get_info()
