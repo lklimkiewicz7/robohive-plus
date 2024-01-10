@@ -20,7 +20,7 @@ class Ur5CubeEnv(env_base.MujocoEnv):
         self._setup(**kwargs)
 
     def _setup(self,
-               frame_skip=40,
+               frame_skip=10,
                reward_mode="dense",
                obs_keys=DEFAULT_OBS_KEYS,
                proprio_keys=DEFAULT_PROPRIO_KEYS,
